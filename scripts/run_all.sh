@@ -456,6 +456,14 @@ if [[ "$USE_DOCKER" == "true" ]]; then
   echo "  WIPE all data:     $COMPOSE -f docker/docker-compose.yml down -v"
   echo "  Tail logs:         $COMPOSE -f docker/docker-compose.yml logs -f"
   echo ""
+
+  # =============================================================================
+  # STEP 9 — LAUNCH FULL PLATFORM STACK
+  # Now that all stores are seeded we can safely bring up the rest of the stack.
+  # =============================================================================
+  hdr "Step 9 -- Launching full platform stack"
+  log "Starting platform services (Keycloak + ingestion + processing)..."
+  "$SCRIPT_DIR/stack.sh" up --no-replay
 fi
 
 ok "FlowCore persistent stores are ready."

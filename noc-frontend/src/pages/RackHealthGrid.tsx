@@ -21,7 +21,7 @@ const RACK_HEALTH_QUERY = gql`
   query RackHealthCards($tenantId: String!, $limit: Int) {
     rackHealthCards(tenantId: $tenantId, limit: $limit) {
       entityId canonicalName tenantId operationalStatus
-      healthScore activeAlertCount criticality_level redundancyPosture
+      healthScore activeAlertCount criticalityLevel redundancyPosture
       powerDrawW inletTempC deviceCount
     }
   }

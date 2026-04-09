@@ -102,8 +102,8 @@ def consumer_thread():
             if should_flush:
                 batch_copy = list(_batch)
                 _batch.clear()
-        else:
-            batch_copy = None
+            else:
+                batch_copy = None
 
         if should_flush and batch_copy:
             asyncio.run_coroutine_threadsafe(flush_batch(batch_copy), _async_loop)

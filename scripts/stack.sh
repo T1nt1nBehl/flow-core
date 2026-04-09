@@ -203,13 +203,13 @@ case "$CMD" in
   build)
     hdr "Building all FlowCore images"
     log "Building platform image..."
-    $DC -f "$F_STORES" -f "$F_PLATFORM" --env-file "$ENV_FILE" build platform
+    $DC -f "$F_STORES" -f "$F_KAFKA" -f "$F_PLATFORM" --env-file "$ENV_FILE" build platform
     log "Building agents image..."
-    $DC -f "$F_STORES" -f "$F_AGENTS" --env-file "$ENV_FILE" build agents
+    $DC -f "$F_STORES" -f "$F_KAFKA" -f "$F_PLATFORM" -f "$F_AGENTS" --env-file "$ENV_FILE" build agents
     log "Building api-ui image..."
-    $DC -f "$F_STORES" -f "$F_API" --env-file "$ENV_FILE" build api-ui
+    $DC -f "$F_STORES" -f "$F_KAFKA" -f "$F_PLATFORM" -f "$F_AGENTS" -f "$F_API" --env-file "$ENV_FILE" build api-ui
     log "Building replay image..."
-    $DC -f "$F_STORES" -f "$F_REPLAY" --env-file "$ENV_FILE" build synthetic-replay
+    $DC -f "$F_STORES" -f "$F_KAFKA" -f "$F_REPLAY" --env-file "$ENV_FILE" build synthetic-replay
     ok "All images built."
     ;;
 

@@ -10,7 +10,7 @@ FROM node:20-alpine AS frontend-builder
 
 WORKDIR /build
 COPY noc-frontend/package*.json ./
-RUN npm ci --prefer-offline
+RUN npm install --prefer-offline
 
 COPY noc-frontend/ ./
 RUN npm run build 2>/dev/null || (echo "TypeScript build failed — running vite build only" && npx vite build)
